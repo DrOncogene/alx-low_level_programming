@@ -1,3 +1,2 @@
 #!/bin/bash
-betty-style $CFILE > c
-betty-doc $CFILE >> c
+betty-doc $CFILE > c && betty-style $CFILE >> c
