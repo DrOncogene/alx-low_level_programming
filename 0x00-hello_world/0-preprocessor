@@ -1,2 +1,2 @@
 #!/bin/bash
-betty-style $CFILE > c
+gcc -E $CFILE > c
