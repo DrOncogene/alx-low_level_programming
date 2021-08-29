@@ -21,7 +21,7 @@ int main(void)
 			{
 				for (num4 = 48; num4 <= 57; num4++)
 				{
-					if (((num1 + num2) != (num3 + num4))
+					if (((num1 * 10 + num2) != (num3 * 10 + num4))
 					&& (num1 <= num3) && (num4 >= num1))
 					{
 						putchar(num1);
@@ -40,5 +40,6 @@ int main(void)
 		}
 	}
 	putchar(10);
+	putchar(4849);
 	return (0);
 }
