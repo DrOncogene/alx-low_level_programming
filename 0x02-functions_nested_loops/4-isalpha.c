@@ -8,8 +8,12 @@
 
 int _isalpha(int c)
 {
-	if ((65 <= c <= 90) || (97 <= c <= 122))
-		return (1);
-	else
-		return (0);
+	int i;
+
+	for (i = 65; i <= 122; i++)
+	{
+		if (c != (91..96))
+			return (1);
+	}
+	return (0);
 }
