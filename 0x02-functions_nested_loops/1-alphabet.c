@@ -12,5 +12,5 @@ void print_alphabet(void)
 	for(i = 48; i <= 57; i++)
 		_putchar(i);
 	_putchar('\n');
-	return (0);
+	return;
 }
