@@ -20,12 +20,15 @@ void jack_bauer(void)
 			{
 				for (d4 = 48; d4 <= 57; d4++)
 				{
+					if (d3 <= 53)
+					{
 					_putchar(d1);
 					_putchar(d2);
 					_putchar(':');
 					_putchar(d3);
 					_putchar(d4);
 					_putchar('\n');
+					}
 				}
 			}
 		}
