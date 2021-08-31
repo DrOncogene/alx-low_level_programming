@@ -20,7 +20,7 @@ int _isalpha(int c)
 			if ((c == j) || (c == i))
 				return (1);
 		}
-		j++
+		j++;
 	}
-	return (0)
+	return (0);
 }
