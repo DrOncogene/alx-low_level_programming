@@ -12,7 +12,7 @@ int _isalpha(int c)
 
 	for (i = 65; i <= 122; i++)
 	{
-		if (c != (91..96))
+		if (c < 91 && c > 96)
 			return (1);
 	}
 	return (0);
