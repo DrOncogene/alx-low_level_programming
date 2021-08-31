@@ -8,19 +8,8 @@
 
 int _isalpha(int c)
 {
-	int i;
-
-	i = 65;
-	while (i <= 90)
-	{
-		int j;
-
-		for (j = 97; j <= 122; j++)
-		{
-			if ((c == j) || (c == i))
-				return (1);
-		}
-		j++;
-	}
-	return (0);
+	if ((65 <= c <= 90) || (97 <= c <= 122))
+		return (1);
+	else
+		return (0);
 }
