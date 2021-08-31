@@ -1,12 +1,9 @@
-#include <unistd.h>
-#include "main.h"
-
 /**
  * main - prints the lowercase alphabet
  * none
  * Return: int value 0
  */
-int main(void)
+void print_alphabet(void)
 {
 	int i;
 
