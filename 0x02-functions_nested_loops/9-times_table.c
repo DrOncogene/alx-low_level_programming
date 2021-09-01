@@ -23,7 +23,10 @@ void times_table(void)
 			if (j > 0)
 				_putchar(' ');
 			if ((prod / 10) == 0)
-				_putchar(' ');
+			{
+				if (j > 0)
+					_putchar(' ');
+			}
 			else
 				_putchar((prod / 10) + '0');
 			_putchar((prod % 10) + '0');
@@ -31,6 +34,7 @@ void times_table(void)
 				_putchar(',');
 			j++;
 		}
+		_putchar('\n');
 		i++;
 	}
 }
