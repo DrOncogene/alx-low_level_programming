@@ -13,7 +13,7 @@ void print_remaining_days(int month, int day, int year)
 {
 	if (year <= 2021)
 	{
-		if (year <= 2021 && (year % 4 == 0 || year % 400 == 0))
+		if (year % 4 == 0 || year % 400 == 0)
 		{
 			if (month >= 2 && day >= 60)
 			{
@@ -37,5 +37,5 @@ void print_remaining_days(int month, int day, int year)
 		}
 	}
 	else
-		printf("Invalid year: %04d\n", year);
+		printf("Invalid year: %02d/%02d/%04d\n", month, day - 31, year);
 }
