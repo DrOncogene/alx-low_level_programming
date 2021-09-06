@@ -19,7 +19,7 @@ void rev_string(char *s)
 	}
 	last = s - 1;
 
-	for (j = 0; j < i/2; j++)
+	for (j = 0; j < i / 2; j++)
 	{
 		c = *first;
 		*first = *(last - j);
