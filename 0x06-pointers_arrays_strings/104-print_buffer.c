@@ -23,7 +23,6 @@ void print_buffer(char *b, int size)
 				printf("%08x: ", i);
 			else
 				printf("%08x: ", (i * 10));
-
 			for (k = start; k <= start + 8; k += 2)
 			{
 				if (k < size)
@@ -38,7 +37,8 @@ void print_buffer(char *b, int size)
 			for (j = 0; j < 10; j++)
 				if (start + j < size)
 				{
-					if (*(b + start + j) >= 0 && *(b + start + j) <= 31)
+					if ((*(b + start + j) >= 0 && *(b + start
++ j) <= 31) && *(b + start + j) != 127)
 						printf("%c", '.');
 					else
 						printf("%c", *(b + start + j));
