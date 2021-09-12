@@ -29,7 +29,7 @@ void print_buffer(char *b, int size)
 					printf("%02x%02x ", *(b + k), *(b + k + 1));
 				else
 					printf("%c %c  ", ' ', ' ');
-			
+
 			for (j = 0; j < 10; j++)
 				if (start + j < size)
 				{
