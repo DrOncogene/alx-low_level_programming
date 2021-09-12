@@ -30,7 +30,7 @@ void print_buffer(char *b, int size)
 					printf("%02x", *(b + k));
 				else
 					printf("%c ", ' ');
-				if (k + 1 <= size && size > 1)
+				if (k + 1 < size && size > 1)
 					printf("%02x ", *(b + k + 1));
 				else
 					printf("%c  ", ' ');
