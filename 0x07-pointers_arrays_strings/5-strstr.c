@@ -28,8 +28,10 @@ char *_strstr(char *haystack, char *needle)
 				if (*(haystack + i) == *(needle - len_n + i))
 					match = 1;
 				else
+				{
 					match = 0;
 					break;
+				}
 		}
 		if (match == 1)
 			return (haystack);
