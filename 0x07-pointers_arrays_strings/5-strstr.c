@@ -21,10 +21,10 @@ char *_strstr(char *haystack, char *needle)
 
 	while (*haystack != 0)
 	{
+		if (len_n == 0)
+			return (haystack);
 		if (*haystack == *(needle - len_n))
 		{
-			if (len_n == 0)
-				return (haystack);
 			match = 0;
 			for (i = 0; i < len_n; i++)
 				if (*(haystack + i) == *(needle - len_n + i))
