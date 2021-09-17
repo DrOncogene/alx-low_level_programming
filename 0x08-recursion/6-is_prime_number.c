@@ -13,6 +13,13 @@ int is_prime_number(int n)
 	return (prime(n, n / 2));
 }
 
+/**
+ * prime - check if a number is divisible by numbers below a given limit
+ * @n: the number
+ * @mid: upper limit of the dividing range
+ * Return: 0 if n is divisible by any of the number in the range, 1 otherwise
+ */
+
 int prime(int n, int mid)
 {
 	if (mid < 2)
