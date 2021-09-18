@@ -28,12 +28,6 @@ int main(int argc, char *argv[])
 				}
 				curr_num++;
 			}
-			/*if ((*argv[i] < 48 || *argv[i] > 57) && *argv[i] != '+')
-			{
-				printf("%s\n", "Error");
-				return (1);
-			}
-			else*/
 			add = add + atoi(argv[i]);
 		}
 		printf("%d\n", add);
