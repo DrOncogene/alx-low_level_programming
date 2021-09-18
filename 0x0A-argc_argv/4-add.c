@@ -9,6 +9,7 @@
 int main(int argc, char *argv[])
 {
 	int add, i;
+	char *curr_num;
 
 	add = 0;
 	if (argc == 1)
@@ -17,13 +18,23 @@ int main(int argc, char *argv[])
 	{
 		for (i = 1; i < argc; i++)
 		{
-			if ((*argv[i] < 48 || *argv[i] > 57) && *argv[i] != '+')
+			curr_num = argv[i];
+			while (*curr_num != 0)
+			{
+				if (*curr_num < 48 || *curr_num > 57)
+				{
+					printf("%s\n", "Error");
+					return (1);
+				}
+				curr_num++;
+			}
+			/*if ((*argv[i] < 48 || *argv[i] > 57) && *argv[i] != '+')
 			{
 				printf("%s\n", "Error");
 				return (1);
 			}
-			else
-				add = add + atoi(argv[i]);
+			else*/
+			add = add + atoi(argv[i]);
 		}
 		printf("%d\n", add);
 	}
