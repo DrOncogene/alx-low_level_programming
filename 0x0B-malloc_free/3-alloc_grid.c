@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stddef.h>
-
+#include <stdio.h>
 /**
  * alloc_grid - creates a 2D array of 0s
  * @width: width of array
@@ -15,7 +15,7 @@ int **alloc_grid(int width, int height)
 	if (width <= 0 || height <= 0)
 		return (NULL);
 
-	ar = malloc(sizeof(int) * 0);
+	ar = malloc(sizeof(int) * height * 2);
 	if (ar != NULL)
 	{
 		i = 0;
