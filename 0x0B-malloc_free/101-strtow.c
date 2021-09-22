@@ -12,31 +12,37 @@ int word_len(char *w);
 char **strtow(char *str)
 {
 	char **s, *str_h;
-	int words, i, j;
+	int words, i, j, len_word;
 
 	words = word_count(str);
 	str_h = str;
+	len_word = 0;
 	s = malloc(sizeof(int) * (words + 1) * 2);
 	if (s != NULL)
 	{
 		i = 0;
 		while (*str != 0)
 		{
-			if ((str == str_h && *str != 0) || (*str == ' ' && *(str + 1) != ' '
-&& *(str + 1) != 0))
+			if (str == str_h && *str != ' ' && *str != 0)
 			{
-				s[i] = malloc(sizeof(char) * word_len(str + 1));
+				len_word = word_len(str);
+				s[i] = malloc(sizeof(char) * len_word);
 				if (s[i] != NULL)
 				{
-					for (j = 0; j < word_len(str + 1); j++)
+					for (j = 0; j < len_word; j++)
 						s[i][j] = *(str + 1 + j);
 					i++;
 				}
-				else
+			}
+			else if (*str == ' ' && *(str + 1) != ' ' && *(str + 1) != 0)
+			{
+				len_word = word_len(str + 1);
+				s[i] = malloc(sizeof(char) * len_word);
+				if (s[i] != NULL)
 				{
-					for (i = 0; i < words; i++)
-						free(s[i]);
-					free(s);
+					for (j = 0; j < len_word; j++)
+						s[i][j] = *(str + 1 + j);
+					i++;
 				}
 			}
 			str++;
