@@ -106,7 +106,7 @@ void set_string(char **dest, char *src, int i, int len)
 	dest[i] = malloc(sizeof(char) * (len + 1));
 	if (dest[i] != NULL)
 	{
-		for (j = 0; j <= len; j++)
+		for (j = 0; j < len; j++)
 			dest[i][j] = *(src + j);
 	}
 }
