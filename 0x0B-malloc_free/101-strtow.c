@@ -17,7 +17,9 @@ char **strtow(char *str)
 	words = word_count(str);
 	str_h = str;
 	len_word = 0;
-	s = malloc(sizeof(int) * (words + 1) * 2);
+	if (str == NULL || *str == 0)
+		return (NULL);
+	s = malloc(sizeof(int) * words * 2);
 	if (s != NULL)
 	{
 		i = 0;
