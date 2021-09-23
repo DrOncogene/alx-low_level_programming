@@ -71,9 +71,18 @@ int word_count(char *s)
 	count = 0;
 	while (*s != 0)
 	{
-		if (*s != ' ' || (*s == ' ' && *(s + 1) != ' ' && *(s + 1) != 0))
+		if (*s != ' ' && *s != 0)
+		{
 			count++;
-		s++;
+			s += word_len(s);
+		}
+		else if (*s == ' ' && *(s + 1) != ' ' && *(s + 1) != 0)
+		{
+			count++;
+			s += word_len(s + 1);
+		}
+		else
+			s++;
 	}
 
 	return (count);
