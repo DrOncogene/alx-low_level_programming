@@ -29,10 +29,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			*(s_hold + i) = *(s1 + i);
 		}
 
-		for (j = 0; j < n; j++, i++)
+		for (j = 0; j < (len_s - len(s2)); j++, i++)
 			*(s_hold + i) = *(s2 + j);
 		*(s_hold + i) = '\0';
 	}
+	else
+		return (NULL);
 
 	return (s);
 }
