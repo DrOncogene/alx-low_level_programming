@@ -19,7 +19,7 @@ char **strtow(char *str)
 	str_h = str;
 	if (str == NULL || *str == 0 || words == 0)
 		return (NULL);
-	s = malloc(sizeof *s * (words + 1));
+	s = malloc(sizeof(*s) * (words + 1));
 	if (s != NULL)
 	{
 		i = 0;
