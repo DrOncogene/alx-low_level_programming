@@ -16,7 +16,6 @@ char **strtow(char *str)
 
 	words = word_count(str);
 	str_h = str;
-	len_word = 0;
 	if (str == NULL || *str == 0 || words == 0)
 		return (NULL);
 	s = malloc(sizeof(int) * words * 2);
@@ -25,6 +24,7 @@ char **strtow(char *str)
 		i = 0;
 		while (*str != 0)
 		{
+			len_word = 0;
 			if (str == str_h && *str != ' ' && *str != 0)
 			{
 				len_word = word_len(str);
@@ -47,7 +47,10 @@ char **strtow(char *str)
 					i++;
 				}
 			}
-			str++;
+			if (len_word == 0)
+				str++;
+			else
+				str += len_word;
 		}
 		s[i] = malloc(sizeof(int) * 1);
 		s[i] = NULL;
