@@ -30,7 +30,7 @@ char **strtow(char *str)
 				if (s[i] != NULL)
 				{
 					for (j = 0; j < len_word; j++)
-						s[i][j] = *(str + 1 + j);
+						s[i][j] = *(str + j);
 					i++;
 				}
 			}
