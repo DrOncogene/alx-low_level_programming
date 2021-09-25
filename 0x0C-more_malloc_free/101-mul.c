@@ -61,9 +61,15 @@ int main(int argc, char *argv[])
 			*(res_p + i) = multiply(n1, (n2 + len2 - 1 - i), len_r, i);
 
 	res = malloc(sizeof(char) * len_r);
-	infinite_add(res_p, res, len2, len_r - 1);
-
-	print(res);
+	if (res != NULL)
+	{
+		infinite_add(res_p, res, len2, len_r - 1);
+		print(res);
+	}
+	for (i = 0; i < len2; i++)
+		free(*(res_p + i));
+	free(res_p);
+	free(res);
 
 	return (0);
 }
@@ -112,10 +118,10 @@ char *multiply(char *num, char *n, int len_res, int pos)
 
 	offset = len_res - pos - 1;
 	res = malloc(sizeof(char) * len_res);
-	for (i = 0; i < len_res; i++)
-		*(res + i) = '0';
 	if (res != NULL)
 	{
+		for (i = 0; i < len_res; i++)
+			*(res + i) = '0';
 		carry = 0;
 		mul = 0;
 		for (i = 1; i <= len(num); i++)
