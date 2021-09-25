@@ -8,6 +8,7 @@ char *multiply(char *num, char *n, int len_res, int pos);
 void infinite_add(char **in, char *out, int len_in, int size_out);
 void add(char *num1, char *num2, int len);
 void print(char *s);
+int zero_check(char *num);
 /**
  * main - prints the result of the multiplication of two arguments
  * @argc: arg count
@@ -45,6 +46,13 @@ int main(int argc, char *argv[])
 		n2 = n1_hold;
 		len1 = len2;
 		len2 = len1_hold;
+	}
+
+	if (zero_check(n1) == 0 || zero_check(n2) == 0)
+	{
+		_putchar('0');
+		_putchar('\n');
+		return (0);
 	}
 
 	res_p = malloc(sizeof(int) * len2 * 2);
@@ -191,4 +199,18 @@ void print(char *s)
 		s++;
 	}
 	_putchar('\n');
+}
+
+/**
+ * zero_check - checks if the passed number contains only zeros
+ * @num: the number
+ * Return: 0 if num has only zeros, 1 otherwise
+ */
+int zero_check(char *num)
+{
+	if (*num == 0)
+		return (0);
+	if (*num == '0')
+		return (zero_check(num + 1));
+	return (1);
 }
