@@ -1,10 +1,12 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 int check_num(char *s);
 int len(char *s);
 char *multiply(char *num, char *n, int len_res, int pos);
-char *infinite_add(char **ar, int len_ar, int size);
+void infinite_add(char **in, char *out, int len_in, int size_out);
+void add(char *num1, char *num2, int len);
 void print(char *s);
 /**
  * main - prints the result of the multiplication of two arguments
@@ -14,8 +16,14 @@ void print(char *s);
  */
 int main(int argc, char *argv[])
 {
-	char *n1, *n2, *n1_hold, **rs;
+	char *n1, *n2, *n1_hold, **res_p, *res;
 	int len1, len2, len1_hold, len_r, i;
+
+	if (argc != 3)
+	{
+		print("Error");
+		exit(98);
+	}
 
 	n1 = argv[1];
 	n2 = argv[2];
@@ -25,11 +33,6 @@ int main(int argc, char *argv[])
 	len1_hold = len1;
 	len_r = len1 + len2 + 1;
 
-	if (argc != 3)
-	{
-		print("Error");
-		exit(98);
-	}
 	if (check_num(n1) == 0 || check_num(n2) == 0)
 	{
 		print("Error");
@@ -44,16 +47,16 @@ int main(int argc, char *argv[])
 		len2 = len1_hold;
 	}
 
-	rs = malloc(sizeof(int) * len2 * 2);
-	if (rs != NULL)
-	{
+	res_p = malloc(sizeof(int) * len2 * 2);
+	if (res_p != NULL)
 		for (i = 0; i < len2; i++)
-			*(rs + i) = multiply(n1, (n2 + len2 - 1 - i), len_r, i);
-	}
-	/*
-	 * for (i = 0; i < len2; i++)
-	 *	printf("%s\n", *(rs + i));
-	 */
+			*(res_p + i) = multiply(n1, (n2 + len2 - 1 - i), len_r, i);
+
+	res = malloc(sizeof(char) * len_r);
+	infinite_add(res_p, res, len2, len_r - 1);
+
+	print(res);
+
 	return (0);
 }
 
@@ -85,11 +88,13 @@ int len(char *s)
 }
 
 /**
- * multiply - multiplies num and n
- * @num: first num (the longer of the two)
- * @n: second num (a single digit)
+ * multiply - multiplies num and n, where num is the longer of the
+ * two args passed and n is a single digit from the shorter arg
+ * @num: first num
+ * @n: second num
  * @len_res: fixed length of the result, empty points are filled with 0's
- * @pos: offset from the end of the result
+ * @pos: offset from the end of the result, reflects the position
+ * of n in the shorter argument
  * Return: pointer to the result
  */
 char *multiply(char *num, char *n, int len_res, int pos)
@@ -98,7 +103,7 @@ char *multiply(char *num, char *n, int len_res, int pos)
 	int i, carry, mul, offset;
 
 	offset = len_res - pos - 1;
-	res = calloc(len_res, sizeof(char));
+	res = malloc(sizeof(char) * len_res);
 	for (i = 0; i < len_res; i++)
 		*(res + i) = '0';
 	if (res != NULL)
@@ -125,15 +130,65 @@ char *multiply(char *num, char *n, int len_res, int pos)
 }
 
 /**
- * print - print a string
+ * infinite_add - add all results of initial multip pointed to by pointers
+ * saved in **in, each result of length size_out
+ * @in: a collection of pointers to results of initial multiplications
+ * @out: buffer to save the result in
+ * @len_in: number of results in **in, equal to the number of digits
+ * in the shortest of the two arg passed to the program
+ * @size_out: size of the *out buffer to save the result in
+ * Return: nothing
+ */
+void infinite_add(char **in, char *out, int len_in, int size_out)
+{
+	int i;
+	char *num2;
+
+	for (i = 0; i < size_out; i++)
+		*(out + i) = *(*in + i);
+	*(out + size_out) = '\0';
+
+	for (i = 1; i < len_in; i++)
+	{
+		num2 = *(in + i);
+		add(out, num2, size_out);
+	}
+}
+
+/**
+ * add - adds num1 and num2 each of length len and save the result in num1
+ * @num1: first number, also where the result is saved
+ * @num2: second number
+ * @len: length of num1 and num2
+ * Return: nothing
+ */
+void add(char *num1, char *num2, int len)
+{
+	int i, sum, carry;
+
+	sum = 0;
+	carry = 0;
+	for (i = 1; i <= len; i++)
+	{
+		sum = (*(num1 + len - i) - '0') + (*(num2 + len - i) - '0') + carry;
+		carry = sum / 10;
+		*(num1 + len - i) = (sum % 10) + '0';
+	}
+}
+
+/**
+ * print - print a string, if string starts with 0, it is ignored
  * @s: the string
  * Return: nothing
  */
 void print(char *s)
 {
+	if (*s == '0')
+		s++;
 	while (*s != 0)
 	{
 		_putchar(*s);
 		s++;
 	}
+	_putchar('\n');
 }
