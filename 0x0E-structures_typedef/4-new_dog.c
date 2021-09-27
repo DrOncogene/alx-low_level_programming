@@ -12,6 +12,7 @@ char *copy(char *src);
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	struct dog *new;
+
 	char *new_name = copy(name);
 	char *new_owner = copy(owner);
 
@@ -33,9 +34,10 @@ char *copy(char *src)
 	char *dest_hold;
 
 	char *dest = malloc(sizeof(int) * 2);
+
 	dest_hold = dest;
 	if (dest != NULL)
-	{	
+	{
 		while (*src != 0)
 		{
 			*dest = *src;
@@ -44,6 +46,6 @@ char *copy(char *src)
 		}
 		*dest = '\0';
 	}
-	
+
 	return (dest_hold);
 }
