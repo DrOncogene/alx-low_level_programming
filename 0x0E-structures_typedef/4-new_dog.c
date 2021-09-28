@@ -39,16 +39,16 @@ dog_t *new_dog(char *name, float age, char *owner)
 char *copy(char *src)
 {
 	int len, i;
-	char *src_hold, *dest;
+	char *dest;
 
 	len = 0;
-	src_hold = src;
-	while (*src_hold != 0)
+	while (*src != 0)
 	{
 		len++;
-		src_hold++;
+		src++;
 	}
 
+	src -= len;
 	dest = malloc(sizeof(char) * (len + 1));
 	if (dest != NULL)
 	{
