@@ -17,10 +17,12 @@ dog_t *new_dog(char *name, float age, char *owner)
 	char *new_owner = copy(owner);
 
 	new = malloc(sizeof(struct dog));
-	new->name = new_name;
-	new->age = age;
-	new->owner = new_owner;
-
+	if (new != NULL)
+	{	
+		new->name = new_name;
+		new->age = age;
+		new->owner = new_owner;
+	}
 	return (new);
 }
 
