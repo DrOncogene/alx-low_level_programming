@@ -11,21 +11,24 @@ char *copy(char *src);
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	struct dog *new;
-
+	dog_t *dog;
 	char *new_name = copy(name);
 	char *new_owner = copy(owner);
 
-	new = malloc(sizeof(struct dog));
-	if (new != NULL)
+	dog = malloc(sizeof(struct dog));
+	if (dog != NULL)
 	{
-		new->name = new_name;
-		new->age = age;
-		new->owner = new_owner;
+		dog->name = new_name;
+		dog->age = age;
+		dog->owner = new_owner;
 	}
 	else
-		return (NULL);
-	return (new);
+	{
+		free(new_name);
+		free(new_owner);
+	}
+
+	return (dog);
 }
 
 /**
@@ -53,8 +56,6 @@ char *copy(char *src)
 			*(dest + i) = *(src + i);
 		*(dest + i) = '\0';
 	}
-	else
-		return (NULL);
 
 	return (dest);
 }
