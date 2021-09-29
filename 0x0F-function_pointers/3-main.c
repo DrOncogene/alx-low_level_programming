@@ -11,7 +11,7 @@
   */
 int main(int argc, char *argv[])
 {
-	int *func(int, int), res;
+	int res;
 
 	if (argc != 4)
 	{
@@ -19,8 +19,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	if (*argv[2] != '+' && *argv[2] != '-' && *argv[2] != '*'
-&& *argv[2] != '/' && *argv[2] != '%')
+	if (get_op_func(argv[2]) == NULL)
 	{
 		printf("%s\n", "Error");
 		exit(99);
