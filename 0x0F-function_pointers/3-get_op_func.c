@@ -1,5 +1,6 @@
 #include "3-calc.h"
 #include <stddef.h>
+#include <stdlib.h>
 
 /**
   * get_op_func - gets the appropriate function to be used
@@ -19,7 +20,7 @@ int (*get_op_func(char *s))(int, int)
 	};
 
 	i = 0;
-	while (i < 6)
+	while (i < 5)
 	{
 		if (*s == *(ops[i].op))
 			break;
