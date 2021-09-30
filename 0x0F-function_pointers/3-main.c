@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
   * main - performs the specified operation on the passed numbers
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	if (get_op_func(argv[2]) == NULL)
+	if (strlen(argv[2]) > 1 || get_op_func(argv[2]) == NULL)
 	{
 		printf("%s\n", "Error");
 		exit(99);
