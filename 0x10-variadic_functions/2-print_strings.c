@@ -26,7 +26,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 			for (j = 0; j < len(word); j++)
 				printf("%c", *(word + j));
 
-		if (separator != NULL || len(separator) != 0)
+		if (separator != NULL && len(separator) != 0)
 			if (i != n - 1)
 				for (j = 0; j < len(separator); j++)
 					printf("%c", *(separator + j));
