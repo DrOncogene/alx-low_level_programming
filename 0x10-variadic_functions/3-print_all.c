@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdarg.h>
+
 void print_str(char *s);
 int len(const char *const s);
 /**
@@ -38,7 +39,7 @@ void print_all(const char *const format, ...)
 			default:
 				break;
 		}
-		
+
 		if (i != len(format) - 1)
 		{
 			switch (*(format + i))
@@ -61,13 +62,20 @@ void print_all(const char *const format, ...)
 	va_end(ap);
 }
 
+/**
+  * print_str - prints a given string
+  * @s: the string
+  * Return: nothing
+  */
 void print_str(char *s)
 {
-	if (s == NULL)
-	{
-		printf("(nil)");
-		return;
-	}
+	/**
+	*if (s == NULL)
+	*{
+	*	printf("(nil)");
+	*	return;
+	*}
+	*/
 	while (*s != 0)
 	{
 		printf("%c", *s);
@@ -75,6 +83,11 @@ void print_str(char *s)
 	}
 }
 
+/**
+  * len - find the length of a string
+  * @s: the string
+  * Return: len
+  */
 int len(const char *const s)
 {
 	if (*s == 0)
