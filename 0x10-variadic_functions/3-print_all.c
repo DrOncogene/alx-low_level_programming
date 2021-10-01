@@ -14,50 +14,53 @@ void print_all(const char *const format, ...)
 {
 	va_list ap;
 	int i;
-	char *s;
+
+	va_start(ap, format);
 
 	i = 0;
-	va_start(ap, format);
-	while (i < len((char *)format))
+	while (i < len((char *)format) - 1)
 	{
 		switch (*(format + i))
 		{
 			case 'c':
-				printf("%c", va_arg(ap, int));
+				printf("%c, ", va_arg(ap, int));
 				break;
 			case 'i':
-				printf("%d", va_arg(ap, int));
+				printf("%d, ", va_arg(ap, int));
 				break;
 			case 'f':
-				printf("%f", va_arg(ap, double));
+				printf("%f, ", va_arg(ap, double));
 				break;
 			case 's':
-				s = va_arg(ap, char *);
-				print_str(s);
+				print_str(va_arg(ap, char *));
+				printf(", ");
 				break;
 			default:
 				break;
 		}
 
-		if (i != len((char *)format) - 1)
-		{
-			switch (*(format + i))
-			{
-				case 'c':
-				case 'i':
-				case 'f':
-				case 's':
-					printf(", ");
-					break;
-				default:
-					break;
-			}
-		}
-
 		i++;
 	}
 
-	printf("\n");
+	switch (*(format + i))
+	{
+		case 'c':
+			printf("%c\n", va_arg(ap, int));
+			break;
+		case 'i':
+			printf("%d\n", va_arg(ap, int));
+			break;
+		case 'f':
+			printf("%f\n", va_arg(ap, double));
+			break;
+		case 's':
+			print_str(va_arg(ap, char *));
+			printf("\n");
+			break;
+		default:
+			break;
+	}
+
 	va_end(ap);
 }
 
@@ -88,17 +91,8 @@ void print_str(char *s)
   */
 int len(char *s)
 {
-	int len_s;
-	char *s_hold;
-
-	len_s = 0;
-	s_hold = (char *)s;
-	while (*s_hold != 0)
-	{
-		len_s++;
-		s_hold++;
-	}
-
-	return (len_s);
+	if (*s == 0)
+		return (0);
+	return (len(s + 1) + 1);
 }
 
