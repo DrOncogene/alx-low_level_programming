@@ -91,7 +91,7 @@ void print_str(char *s)
   */
 int len(char *s)
 {
-	if (*s == 0)
+	if (s == NULL || *s == 0)
 		return (0);
 	return (len(s + 1) + 1);
 }
