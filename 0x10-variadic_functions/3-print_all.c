@@ -1,11 +1,10 @@
 #include "variadic_functions.h"
 #include <stdio.h>
 #include <stddef.h>
-#include <stdlib.h>
 #include <stdarg.h>
 
 void print_str(char *s);
-int len(const char *const s);
+int len(char *s);
 /**
   * print_all - prints all passed arguments based of formats given
   * @format: the format string
@@ -19,7 +18,7 @@ void print_all(const char *const format, ...)
 
 	i = 0;
 	va_start(ap, format);
-	while (i < len(format))
+	while (i < len((char *)format))
 	{
 		switch (*(format + i))
 		{
@@ -40,7 +39,7 @@ void print_all(const char *const format, ...)
 				break;
 		}
 
-		if (i != len(format) - 1)
+		if (i != len((char *)format) - 1)
 		{
 			switch (*(format + i))
 			{
@@ -69,13 +68,12 @@ void print_all(const char *const format, ...)
   */
 void print_str(char *s)
 {
-	/**
-	*if (s == NULL)
-	*{
-	*	printf("(nil)");
-	*	return;
-	*}
-	*/
+	if (s == NULL)
+	{
+		printf("(nil)");
+		return;
+	}
+
 	while (*s != 0)
 	{
 		printf("%c", *s);
@@ -88,9 +86,19 @@ void print_str(char *s)
   * @s: the string
   * Return: len
   */
-int len(const char *const s)
+int len(char *s)
 {
-	if (*s == 0)
-		return (0);
-	return (len(s + 1) + 1);
+	int len_s;
+	char *s_hold;
+
+	len_s = 0;
+	s_hold = (char *)s;
+	while (*s_hold != 0)
+	{
+		len_s++;
+		s_hold++;
+	}
+
+	return (len_s);
 }
+
