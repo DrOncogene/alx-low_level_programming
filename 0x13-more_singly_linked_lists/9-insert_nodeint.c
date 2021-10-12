@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
+unsigned int len_list(listint_t *head);
 /**
   * insert_nodeint_at_index - insert a new node at an index
   * @head: head of list
