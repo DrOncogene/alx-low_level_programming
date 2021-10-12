@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
-  * add_node - adds a new node at the begining of a list
+  * add_nodeint - adds a new node at the begining of a list
   * @head: head of the list
   * @n: int value of the new node
   * Return: pointer to new element or NULL
