@@ -15,16 +15,18 @@ size_t print_listint_safe(const listint_t *head)
 	listint_t *head_hold, *loop;
 	int traversed, len;
 
-	if (head == NULL)
-		return (0);
 	head_hold = (listint_t *)head;
 	loop = find_loop((listint_t *)head);
 	traversed = len =  0;
+
+	if (head == NULL)
+		return (len);
+
 	while (head_hold)
 	{
 		printf("%d\n", head_hold->n);
 		len++;
-		if (head_hold == loop)
+		if (head_hold == loop || head_hold == NULL)
 		{
 			traversed++;
 			break;

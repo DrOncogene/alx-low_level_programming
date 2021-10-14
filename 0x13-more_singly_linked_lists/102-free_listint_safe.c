@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
+listint_t *find_listint_loop(listint_t *head);
 /**
   * free_listint_safe - frees a list including those with a loop
   * @h: the list
@@ -9,24 +10,45 @@
   */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *head_hold;
+	listint_t *h_hold, *loop;
+	size_t len;
+	int traversed;
 
-	if (head == NULL)
-		return;
+	loop = find_listint_loop(*h);
+	traversed = len = 0;
+	if (*h == NULL)
+		return (len);
 
-	while (*head)
+	while (*h)
 	{
-		if ((*head)->next == NULL)
+		if (*h == NULL || *h == loop)
 		{
-			free(*head);
+			traversed++;
 			break;
 		}
-		head_hold = *head;
-		*head = (*head)->next;
+		h_hold = *h;
+		*h = (*h)->next;
 
-		free(head_hold);
+		free(h_hold);
+		len++;
 	}
-	*head = NULL;
+
+	while (*h)
+	{
+		if ((*h)->next == loop && traversed == 1)
+		{
+			free(*h);
+			*h = NULL;
+			return (len);
+		}
+		h_hold = *h;
+		*h = (*h)->next;
+
+		free(h_hold);
+		len++;
+	}
+
+	return (len);
 }
 
 /**
