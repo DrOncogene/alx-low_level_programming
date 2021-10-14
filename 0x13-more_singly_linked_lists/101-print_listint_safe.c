@@ -15,6 +15,8 @@ size_t print_listint_safe(const listint_t *head)
 	listint_t *head_hold, *loop;
 	int traversed, len;
 
+	if (head == NULL)
+		return (0);
 	head_hold = (listint_t *)head;
 	loop = find_loop((listint_t *)head);
 	traversed = len =  0;
