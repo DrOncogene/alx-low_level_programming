@@ -38,8 +38,7 @@ size_t free_listint_safe(listint_t **h)
 		if ((*h)->next == loop && traversed == 1)
 		{
 			free(*h);
-			*h = NULL;
-			return (len);
+			break;
 		}
 		h_hold = *h;
 		*h = (*h)->next;
@@ -47,6 +46,7 @@ size_t free_listint_safe(listint_t **h)
 		free(h_hold);
 		len++;
 	}
+	*h = NULL;
 
 	return (len);
 }
