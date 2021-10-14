@@ -42,6 +42,8 @@ size_t print_listint_safe(const listint_t *head)
 		printf("[%p] %d\n", (void *)head_hold, head_hold->n);
 		len++;
 	}
+	if (traversed == 1)
+		printf("-> [%p] %d\n", (void *)loop, loop->n);
 
 	return (len);
 }
