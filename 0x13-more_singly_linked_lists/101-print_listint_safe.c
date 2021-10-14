@@ -24,7 +24,7 @@ size_t print_listint_safe(const listint_t *head)
 
 	while (head_hold)
 	{
-		printf("%d\n", head_hold->n);
+		printf("[%p] %d\n", (void *)head_hold, head_hold->n);
 		len++;
 		if (head_hold == loop || head_hold == NULL)
 		{
@@ -39,7 +39,7 @@ size_t print_listint_safe(const listint_t *head)
 		head_hold = head_hold->next;
 		if (head_hold == loop && traversed == 1)
 			break;
-		printf("%d\n", head_hold->n);
+		printf("[%p] %d\n", (void *)head_hold, head_hold->n);
 		len++;
 	}
 
