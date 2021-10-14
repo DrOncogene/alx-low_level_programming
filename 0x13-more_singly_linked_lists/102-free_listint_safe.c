@@ -17,7 +17,7 @@ size_t free_listint_safe(listint_t **h)
 	loop = find_listint_loop(*h);
 	traversed = len = 0;
 	if (*h == NULL)
-		exit(98);
+		return (len);
 
 	while (*h)
 	{
