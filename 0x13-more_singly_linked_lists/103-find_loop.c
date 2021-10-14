@@ -2,11 +2,11 @@
 #include <stddef.h>
 
 /**
-  * find_loop - checks whether a linked list contains a loop or not
+  * find_listint_loop - checks whether a linked list contains a loop or not
   * @head: head of the loop
   * Return: 1 if there is a loop or 0 if not
   */
-listint_t *find_loop(listint_t *head)
+listint_t *find_listint_loop(listint_t *head)
 {
 	listint_t *slow_p, *fast_p;
 
