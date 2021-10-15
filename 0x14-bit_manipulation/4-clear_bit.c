@@ -1,22 +1,22 @@
 #include "main.h"
 
 /**
-  * clear_bit - finds and returns a bit at an index
+  * clear_bit - sets a bit at an index to 0
   * @n: the number
-  * @index: index of bit to be returned
-  * Return: bit at index or -1
+  * @index: index of bit to be cleared
+  * Return: 1 or -1
   */
-int set_bit(unsigned long int *n, unsigned int index)
+int clear_bit(unsigned long int *n, unsigned int index)
 {
 	if (*n == 0 && index == 0)
 	{
-		*n &= 0 << index;
+		*n &= ~(1 << index);
 		return (1);
 	}
 	else if (*n == 0 || index > 63)
 		return (-1);
 
-	*n &= 0 << index;
+	*n &= ~(1 << index);
 
 	return (1);
 }
