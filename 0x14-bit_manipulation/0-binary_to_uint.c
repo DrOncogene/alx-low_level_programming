@@ -11,23 +11,20 @@ int len(char *s);
 unsigned int binary_to_uint(const char *b)
 {
 	int i, j, k, digit;
-	unsigned int num, pow;
+	unsigned int num;
 
 	i = len((char *)b);
+	num = 0;
 	if (b == NULL || i == 0)
 		return (0);
-	num = 0;
-	pow = 1;
+
 	for (--i, j = 0; i >= 0; i--, j++)
 	{
-		for (k = i ; k > 0; k--)
-			pow *= 2;
 		if (b[j] == '1')
 			digit = 1;
 		else
 			digit = 0;
-		num += (digit * pow);
-		pow = 1;
+		num += (digit << i);
 	}
 
 	return (num);
@@ -43,6 +40,9 @@ int len(char *s)
 	int i;
 
 	i = 0;
+	if (s == NULL || *s == 0)
+		return (0);
+
 	while (*s != 0)
 	{
 		if (*s != '1' && *s != '0')
