@@ -16,7 +16,7 @@ int get_bit(unsigned long int n, unsigned int index)
 	else if (n == 0)
 		return (-1);
 
-	for (c = 15; c >= 0; c--)
+	for (c = 63; c >= 0; c--)
 	{
 		a = n >> c;
 
