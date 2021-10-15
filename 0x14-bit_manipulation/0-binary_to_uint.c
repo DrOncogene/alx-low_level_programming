@@ -10,7 +10,7 @@ int len(char *s);
   */
 unsigned int binary_to_uint(const char *b)
 {
-	int i, j, k, digit;
+	int i, j, digit;
 	unsigned int num;
 
 	i = len((char *)b);
