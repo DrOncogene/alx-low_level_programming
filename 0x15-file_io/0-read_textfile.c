@@ -20,8 +20,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (filename == NULL || letters == 0)
 		return (0);
 
-	buf = malloc(sizeof(char) * (letters));
-	fd = open(filename, O_RDONLY, 755);
+	buf = malloc(sizeof(char) * letters);
+	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (0);
 
@@ -30,10 +30,11 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	n_char = write(1, buf, letters);
-	if (n_char == -1)
+	if (n_char == -1 || (n_char < fd))
 		return (0);
 
-	fd = close(fd);
+	close(fd);
+	free(buf);
 
 	return (n_char);
 }
