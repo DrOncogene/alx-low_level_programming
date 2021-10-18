@@ -3,7 +3,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdlib.h>
 #include <stddef.h>
 
 int len(char *s);
@@ -26,6 +25,8 @@ int create_file(const char *filename, char *text_content)
 	w = write(fd, text_content, len(text_content));
 	if (w == -1)
 		return (-1);
+
+	close(fd);
 
 	return (1);
 }
