@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stddef.h>
-
+#include <stdio.h>
 /**
   * read_textfile - reads a text file and prints it to the stdout
   * @filename: name of the file
@@ -26,10 +26,11 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	char_r = read(fd, buf, letters);
+	printf("%ld\n", char_r);
 	if (char_r == -1)
 		return (0);
 
-	char_w = write(STDOUT_FILENO, buf, letters);
+	char_w = write(STDOUT_FILENO, buf, char_r);
 	if (char_w == -1 || (char_w < char_r))
 		return (0);
 
