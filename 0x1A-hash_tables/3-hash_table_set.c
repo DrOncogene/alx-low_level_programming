@@ -44,7 +44,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			free(current);
 		}
 		else if (prev == NULL && key_exist)
+		{
 			free(current);
+			(ht->array)[index] = NULL;
+		}
 		new->next = (ht->array)[index];
 	}
 	(ht->array)[index] = new;
