@@ -17,7 +17,7 @@ void hash_table_print(const hash_table_t *ht)
 	if (buffer == NULL)
 		return;
 	buffer[0] = '\0';
-	strcat(buffer, "{");
+	write(1, "{", 1);
 	for (i = 0; i < ht->size; i++)
 	{
 		current = (ht->array)[i];
@@ -43,7 +43,8 @@ void hash_table_print(const hash_table_t *ht)
 				current = current->next;
 			}
 	}
-	write(1, buffer, strlen(buffer) - 2);
+	if (strlen(buffer) > 0)
+		write(1, buffer, strlen(buffer) - 2);
 	free(buffer);
 	write(1, "}\n", 2);
 }
