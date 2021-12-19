@@ -67,6 +67,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	new->key = strdup(key);
 	new->value = strdup(value);
 	new->next = (ht->array)[index];
+	(ht->array)[index] = new;
 	insert_in_sorted(ht, new);
 
 	return (1);
@@ -154,11 +155,15 @@ void shash_table_print(const shash_table_t *ht)
 	shash_node_t *current;
 	char *buffer;
 
+	if (ht == NULL)
+		return;
+
 	buffer = malloc(sizeof(char) * 1024);
 	if (buffer == NULL)
 		return;
 	buffer[0] = '\0';
 	write(1, "{", 1);
+
 	current = ht->shead;
 	while (current)
 	{
@@ -200,6 +205,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 		return;
 	buffer[0] = '\0';
 	write(1, "{", 1);
+
 	current = ht->stail;
 	while (current)
 	{
