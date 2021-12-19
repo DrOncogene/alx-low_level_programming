@@ -200,6 +200,9 @@ void shash_table_print_rev(const shash_table_t *ht)
 	shash_node_t *current;
 	char *buffer;
 
+	if (ht == NULL)
+		return;
+
 	buffer = malloc(sizeof(char) * 1024);
 	if (buffer == NULL)
 		return;
