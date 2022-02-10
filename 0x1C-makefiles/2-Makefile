@@ -1,7 +1,7 @@
 # _*_Makefile_*_
 
 CC := gcc
-SRC := $(wildcard *.c)
+SRC := main.c school.c
 OBJ := $(SRC:%.c=%.o)
 NAME := school
 
@@ -14,4 +14,4 @@ ${NAME}: ${OBJ}
 	${CC} -c $< -o $@
 
 clean:
-	@rm -f school
+	rm -f *.o school
