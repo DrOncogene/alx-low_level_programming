@@ -1,0 +1,17 @@
+# _*_Makefile_*_
+
+CC := gcc
+SRC := $(wildcard *.c)
+OBJ := $(SRC:%.c=%.o)
+NAME := school
+
+all: ${OBJ} ${NAME}
+
+${NAME}: ${OBJ}
+	${CC} -lm ${OBJ} -o $@
+
+%.o: %.c m.h
+	${CC} -c $< -o $@
+
+clean:
+	@rm -f school
