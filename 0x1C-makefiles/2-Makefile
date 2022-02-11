@@ -5,7 +5,7 @@ SRC = main.c school.c
 OBJ = $(SRC:%.c=%.o)
 NAME = school
 
-all: ${OBJ} ${NAME}
+all: ${OBJ} school
 
 ${NAME}: ${OBJ}
 	${CC} -lm ${OBJ} -o $@
