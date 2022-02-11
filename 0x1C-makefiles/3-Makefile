@@ -1,0 +1,22 @@
+# _*_Makefile_*_
+
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:%.c=%.o)
+NAME = school
+RM = rm
+
+all: ${OBJ}
+	${CC} ${OBJ} -o ${NAME}
+
+%: m.h
+
+clean:
+	${RM} -f *.swp *.swx *\# *~ ${NAME}
+
+oclean:
+	${RM} -f ${OBJ}
+
+fclean: clean oclean
+
+re: oclean all
