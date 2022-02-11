@@ -8,7 +8,4 @@ NAME = school
 all: ${OBJ}
 	${CC} ${OBJ} -o ${NAME}
 
-%: %.c m.h
-
-clean:
-	rm -f *.o school
+%: m.h
