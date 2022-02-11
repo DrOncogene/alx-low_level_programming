@@ -10,8 +10,7 @@ all: school
 school: ${OBJ}
 	${CC} ${OBJ} -o ${NAME}
 
-main.o: main.c m.h
-school.o: school.c m.h
+%: %.c m.h
 
 clean:
 	rm -f *.o school
