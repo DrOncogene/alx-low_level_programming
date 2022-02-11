@@ -7,10 +7,10 @@ NAME = school
 
 all: ${OBJ} school
 
-${NAME}: ${OBJ}
-	${CC} -lm ${OBJ} -o $@
+school: ${OBJ}
+	gcc ${OBJ} -o ${NAME}
 
-%.o: %.c m.h
+%: %.c m.h
 	${CC} -c $< -o $@
 
 clean:
