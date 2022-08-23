@@ -1,0 +1,25 @@
+# _*_Makefile_*_
+
+CC = gcc
+SRC = $(wildcard *.c)
+OBJ = $(SRC:%.c=%.o)
+NAME = school
+
+all: $(OBJ)
+	$(CC) -Wall -Werror -Wextra -pedantic $(OBJ) -o $(NAME)
+
+%: m.h
+
+clean: RM = rm
+
+clean:
+	$(RM) -f *.swp *.swx *\# *~ $(NAME)
+
+oclean: RM = rm
+
+oclean:
+	$(RM) -f $(OBJ)
+
+fclean: clean oclean
+
+re: oclean all
