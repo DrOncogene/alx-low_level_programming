@@ -1,7 +1,7 @@
 # _*_Makefile_*_
 
 CC = gcc
-SRC = $(wildcard *.c)
+SRC = shool.c main.c
 OBJ = $(SRC:%.c=%.o)
 NAME = school
 
