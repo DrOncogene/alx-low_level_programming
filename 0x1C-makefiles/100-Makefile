@@ -11,12 +11,16 @@ all: $(OBJ)
 
 %: m.h
 
+.PHONY: clean
 clean:
 	$(RM) -f *.swp *.swx *\# *~ $(NAME)
 
+.PHONY: oclean
 oclean:
 	$(RM) -f $(OBJ)
 
+.PHONY: fclean
 fclean: clean oclean
 
+.PHONY: re
 re: oclean all
