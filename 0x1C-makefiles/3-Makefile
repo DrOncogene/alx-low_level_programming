@@ -6,10 +6,8 @@ OBJ = $(SRC:%.c=%.o)
 NAME = school
 RM = rm
 
-all: ${OBJ}
+all: m.h ${OBJ}
 	${CC} ${OBJ} -o ${NAME}
-
-%: m.h
 
 clean:
 	${RM} -f *.swp *.swx *\# *~ ${NAME}
