@@ -1,8 +1,4 @@
 #include "main.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -28,7 +24,7 @@ int main(int argc, char *argv[])
 	buff = malloc(sizeof(char) * 1024);
 	fd_fro = open(argv[1], O_RDONLY);
 	n_read = read(fd_fro, buff, 1024);
-	if (access(argv[1], F_OK) != 0 || fd_fro == -1 || n_read == -1)
+	if (fd_fro == -1 || n_read == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		free(buff);
@@ -74,6 +70,8 @@ int copy(int from, int to, char *buff, int n_read)
 	while (n_read == 1024)
 	{
 		n_write = write(to, buff, 1024);
+		if (n_write == -1)
+			return (-1);
 		n_read = read(from, buff, 1024);
 	}
 
