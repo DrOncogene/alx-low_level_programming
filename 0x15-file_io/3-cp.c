@@ -23,8 +23,15 @@ int main(int argc, char *argv[])
 
 	buff = malloc(sizeof(char) * 1024);
 	fd_fro = open(argv[1], O_RDONLY);
+	if (fd_fro == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		free(buff);
+		exit(98);
+	}
+
 	n_read = read(fd_fro, buff, 1024);
-	if (fd_fro == -1 || n_read == -1)
+	if (n_read == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		free(buff);
