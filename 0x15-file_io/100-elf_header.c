@@ -179,7 +179,6 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 		default:
 			printf("<unknown: %x>\n", e_type);
 	}
-	
 }
 
 /**
