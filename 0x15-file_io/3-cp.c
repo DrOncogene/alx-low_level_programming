@@ -1,7 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
-#include <stddef.h>
-#include <stdio.h>
 
 int copy(int from, int to, char *buff, int n_read);
 /**

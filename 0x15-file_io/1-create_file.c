@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stddef.h>
 
 int len(char *s);
 /**
